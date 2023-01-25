@@ -13,7 +13,7 @@ var SpaceShip = function () {
         rows: 6,
         columns: 6,
         spaceSize: 80,
-        speed: 3,
+        speed: 150,
         start: [0,0],
         finish: false,
         showCoordinates: false,
