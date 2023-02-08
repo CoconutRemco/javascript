@@ -1,10 +1,9 @@
 //Variabelen
 let bestellijst = ["fris", "bier", "wijn"];
-let bestellingdict = {};
 let repeat = true;
 let bestellingsdict = {};
+let bestellingdict = {};
 let aantalbestellingvar = 0; 
-//Constanten
 const BIERPRIJS = 2.50;
 const FRISPRIJS = 1.50;
 const WIJNPRIJS = 5.00;
