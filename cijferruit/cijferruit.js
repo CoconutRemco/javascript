@@ -3,13 +3,12 @@ let numberstr = "";
 let numberstr2 = "";
 for (let i = 1; i <= aantal; i++) {
   let number = i;
-  numberlist += number;
-  console.log(numberlist);
-  document.getElementById("antwoord").innerText += numberlist + "\n";
+  numberstr += number;
+  document.getElementById("antwoord").innerText += numberstr + "\n";
   if (i == aantal) {
-    numberlist += "";
+    numberstr += "";
   } else {
-    numberlist += "-";
+    numberstr += "-";
   }
 }
 numberstr2 = numberstr;
