@@ -1,5 +1,5 @@
 let buttonclickdict = {};
-
+let buttonkleurendict = {"1": "red", "2": "purple", "3": "blue", "4": "black"};
 function hoeveel() {
   repeat = true;
   while (repeat == true) {
@@ -17,29 +17,15 @@ function hoeveel() {
 hoeveelbuttons = hoeveel();
 function buttonClick(buttonId) {
   buttonclickdict[buttonId] = buttonclickdict[buttonId] + 1 || 1;
-  if (buttonclickdict[buttonId] == "1") {
-    document.getElementById("button" + buttonId).style.backgroundColor = "red";
-  } else if (buttonclickdict[buttonId] == "2") {
-    document.getElementById("button" + buttonId).style.backgroundColor =
-      "purple";
-  } else if (buttonclickdict[buttonId] == "3") {
-    document.getElementById("button" + buttonId).style.backgroundColor = "blue";
-  } else if (buttonclickdict[buttonId] == "4") {
-    document.getElementById("button" + buttonId).style.backgroundColor =
-      "black";
-  } else if (buttonclickdict[buttonId] == "5") {
-    document.getElementById("button" + buttonId).remove();
+  for (buttonId in buttonclickdict) {
+    document.getElementById("button" + buttonId).style.backgroundColor = buttonkleurendict[buttonclickdict[buttonId]];
+    if (buttonclickdict[buttonId] == "5"){
+      document.getElementById("button" + buttonId).remove();
+      delete(buttonclickdict[buttonId])
+    }
   }
 }
 
 for (let i = 1; i < hoeveelbuttons; i++) {
-  document.write(
-    '<button id="button' +
-      i +
-      '" onclick="buttonClick(' +
-      i +
-      ')">Button ' +
-      i +
-      "</button>"
-  );
+  document.write('<button id="button' + i + '" onclick="buttonClick(' + i + ')">Button ' + i + "</button>");
 }
