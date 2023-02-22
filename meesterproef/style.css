@@ -1,23 +1,23 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+
+
 
 :root {
     --mainwidth: 640px;
     --lightcolor: white;
     --darkcolor: gray;
 }
-  
-body{
+
+body {
     background-color: silver;
 }
-h1{
+
+h1 {
     width: var(--mainwidth);
     text-align: center;
     margin: 20px auto;
     color: var(--darkcolor)
 }
+
 #container {
     width: var(--mainwidth);
     height: 440px;
@@ -34,4 +34,56 @@ footer {
     font-weight: bold;
     color: var(--lightcolor);
     padding-top: 10px;
+}
+
+input {
+    width: 180px;
+    height: 80px;
+    margin-left: 235px;
+    border: 1px solid var(--darkcolor);
+    border-radius: 5px;
+    font-size: 2em;
+    text-align: center;
+}
+
+input:active {
+    background-color: var(--darkcolor);
+    color: var(--lightcolor);
+}
+
+h3 {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--darkcolor);
+}
+
+p{
+    text-align: center;
+    margin-top: 200px;
+    color: var(--darkcolor);
+}
+button {
+    height: 80px;
+    margin-left: 7px;
+    margin-bottom: 10px;
+    border : 2px solid black;
+    border-radius: 5px;
+    font-size: 2em;
+    text-align: center;
+}
+
+button:active {
+    background-color: var(--darkcolor);
+    color: var(--lightcolor);
+}
+
+#klaar{
+    width: 210px;
+    height: 80px;
+    margin-left: 675px;
+    margin-top: 80px;
+    border: 1px solid var(--darkcolor);
+    border-radius: 5px;
+    font-size: 3em;
+    text-align: center;
 }
