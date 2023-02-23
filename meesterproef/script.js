@@ -2,7 +2,7 @@ let partijen = [];
 let votes = {};
 let container = document.getElementById("container");
 let partijCount = 0;
-let test = document.createTextNode('Aantal partijen: ' + partijCount);
+let test = document.createTextNode('Aantal partijen: ' + partijen.length);
 
 let box = document.createElement("div");
 box.id = "box";
@@ -17,10 +17,11 @@ function showVotes() {
     container.removeChild(box)
     container.removeChild(klaar);
     for (let i = 0; i < partijen.length; i++) {
-        container.removeChild(document.getElementById("knop" + i));}
-    element = document.createElement('h2')
-    for (let i = 0; i < partijen.length; i++){
-        node = document.createTextNode(partijen[i] + ": " + votes[partijen[i]]);
+        container.removeChild(document.getElementById("knop" + i));
+    }
+    let element = document.createElement('h2')
+    for (let i = 0; i < partijen.length; i++) {
+        let node = document.createTextNode(partijen[i] + ": " + votes[partijen[i]]);
         element.appendChild(node);
         element.appendChild(document.createElement('br'));
         container.appendChild(element);
@@ -40,10 +41,11 @@ function stemmen() {
             knop.id = "knop" + i;
             knop.innerHTML = partijen[i];
             for (let j = 0; j < partijen.length; j++) {
-                votes[partijen[j]] = 0;}
+                votes[partijen[j]] = 0;
+            }
             knop.onclick = function () {
                 alert("U heeft gestemd op " + partijen[i]);
-                votes[partijen[i]] = +i+1;
+                votes[partijen[i]] = +i + 1;
 
             }
 
@@ -84,7 +86,7 @@ document.addEventListener("keydown", function (event) {
 toevoegen.onclick = function () {
     box.removeChild(test);
     if (document.getElementById("invoer").value === "klaar" || document.getElementById("invoer").value === "stop") {
-        if (partijen.length === 0) {
+        if (partijen.length >= 0) {
             alert("Voeg eerst een partij toe!");
             partijCount--;
         } else {
@@ -93,24 +95,36 @@ toevoegen.onclick = function () {
         }
     }
 
-    if (document.getElementById("invoer").value === "") {
+    if (document.getElementById("invoer").value === "" || document.getElementById("invoer").value === " ") {
         alert("Vul een partijnaam in!");
-        partijCount--;
+        if (partijCount === 0) {
+            partijCount--;
+        } else {
+        }
     }
 
     if (partijen.includes(document.getElementById("invoer").value)) {
         alert("Deze partij bestaat al!");
         partijen.pop();
-        partijCount--;
+        if (partijCount === 0) {
+            partijCount--;
+        } else {
+
+        }
     }
 
     let partij = document.getElementById("invoer").value;
-    partijen.push(partij);
+    if (document.getElementById("invoer").value === "" || document.getElementById("invoer").value === " ") {
+    } else if (document.getElementById("invoer").value === "klaar" || document.getElementById("invoer").value === "stop") {
+    }
+    else {
+        partijen.push(partij);
+    }
     document.getElementById("invoer").value = "";
     partijCount++;
 
 
-    test = document.createTextNode('Aantal partijen: ' + partijCount);
+    test = document.createTextNode('Aantal partijen: ' + partijen.length);
 
     box.appendChild(test);
 
@@ -120,5 +134,3 @@ toevoegen.onclick = function () {
 
 container.appendChild(invoer);
 container.appendChild(toevoegen);
-
-
