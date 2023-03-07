@@ -14,6 +14,17 @@ alert("Welkom bij de verkiezingen! Voeg hieronder een partij toe om te beginnen 
 
 
 function showVotes() {
+    let winnaar = "";
+    let winnaarVotes = 0;
+    let dubbelepartijen = 0;
+    for (let i = 0; i < partijen.length; i++) {
+        winnaarVotes = votes[partijen[i]];
+        if (votes[partijen[i]] > winnaarVotes) {
+            winnaar = "De winnaar is " + partijen[i] + " met " + winnaarVotes + " stemmen!";}
+        else if (votes[partijen[i]] === winnaarVotes) {
+            dubbelepartijen += 1;
+            winnaar = "Er is geen winnaar, " + dubbelepartijen + "partijen " +" hebben evenveel stemmen!";
+        }}
     container.removeChild(box)
     container.removeChild(klaar);
     for (let i = 0; i < partijen.length; i++) {
@@ -26,6 +37,10 @@ function showVotes() {
         element.appendChild(document.createElement('br'));
         container.appendChild(element);
     }
+    let winnaarElement = document.createElement('h2');
+    let winnaarNode = document.createTextNode(winnaar);
+    winnaarElement.appendChild(winnaarNode);
+    container.appendChild(winnaarElement);
 
 
 }
@@ -45,7 +60,7 @@ function stemmen() {
             }
             knop.onclick = function () {
                 alert("U heeft gestemd op " + partijen[i]);
-                votes[partijen[i]] = +i + 1;
+                votes[partijen[i]] += 1;
 
             }
 
@@ -86,7 +101,7 @@ document.addEventListener("keydown", function (event) {
 toevoegen.onclick = function () {
     box.removeChild(test);
     if (document.getElementById("invoer").value === "klaar" || document.getElementById("invoer").value === "stop") {
-        if (partijen.length >= 0) {
+        if (partijen.length >= 0  && document.getElementById("invoer").value != "klaar" && document.getElementById("invoer").value != "stop") {
             alert("Voeg eerst een partij toe!");
             partijCount--;
         } else {
@@ -103,7 +118,7 @@ toevoegen.onclick = function () {
         }
     }
 
-    if (partijen.includes(document.getElementById("invoer").value)) {
+    if (partijen.includes(document.getElementById("invoer").value.toLowerCase())) {
         alert("Deze partij bestaat al!");
         partijen.pop();
         if (partijCount === 0) {
