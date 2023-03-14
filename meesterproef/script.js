@@ -26,14 +26,20 @@ function showVotes() {
         element.appendChild(document.createElement('br'));
         container.appendChild(element);
     }
+    let geenwinnar = Object.keys(votes).filter(x => { return votes[x] === 0 });
     let winnaar = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
     let meerderewinaar = Object.keys(votes).filter(x => { return votes[x] === votes[winnaar] });
-    if (meerderewinaar.length === 1) {
+    if (geenwinnar.length === partijen.length) {
+        let node = document.createTextNode("Geen winnaar")
+        element.appendChild(node);
+        container.appendChild(element);
+    }
+    else if (meerderewinaar.length === 1) {
         let winnaarElement = document.createElement('h2')
         let winnaarNode = document.createTextNode('De winnaar is: ' + winnaar);
         winnaarElement.appendChild(winnaarNode);
         container.appendChild(winnaarElement);
-    } else {            
+    } else if (meerderewinaar.length > 1){            
         let winnaarElement = document.createElement('h2')
         let winnaarNode = document.createTextNode('De winnaars zijn: ' + meerderewinaar);
         winnaarElement.appendChild(winnaarNode);
