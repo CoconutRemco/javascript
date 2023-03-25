@@ -175,3 +175,4 @@ function bonnetje(bestellingdict) {
     "Totaalprijs: €" + totaalprijs + "\n";
   document.getElementById("antwoord").innerText += bonnetjetext + "\n";
 }
+
